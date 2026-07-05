@@ -359,30 +359,32 @@
 
                 if (response.ok) {
                     // Guardamos el veredicto real de Cerebras para WhatsApp
-                    currentVerdictText = data.veredicto;
+                    currentVerdictText = data.veredicto || "";
                     
-                    // Pequeña lógica cosmética para el título según el resultado
-                    if (data.veredicto.toLowerCase().includes("vos sos") || data.veredicto.toLowerCase().includes("culpable")) {
+                    // SEGURIDAD: Solo pasamos a minúsculas si el texto realmente existe
+                    if (currentVerdictText && (currentVerdictText.toLowerCase().includes("vos sos") || currentVerdictText.toLowerCase().includes("culpable"))) {
                         document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-rose-500">¡El tribunal habló!</span>`;
                     } else {
                         document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-emerald-500">¡Fuiste absuelto!</span>`;
                     }
                     
                     // Inyectamos la respuesta cruda de la IA
-                    document.getElementById('verdict-snippet').textContent = data.veredicto;
+                    document.getElementById('verdict-snippet').textContent = currentVerdictText;
                     
                     // Desplegar resultados con animación fluida
                     resultsArea.classList.remove('hidden');
                     resultsArea.scrollIntoView({ behavior: 'smooth' });
                 } else {
+                    // SI EL BACKEND RESPONDIÓ UN ERROR (EJ: 500 DE CEREBRAS), MOSTRARLO BIEN ACÁ
                     document.getElementById('verdict-title').innerHTML = "❌ Error en el Juzgado";
-                    document.getElementById('verdict-snippet').textContent = `El servidor arrojó un error: ${data.detail || 'Inténtalo de nuevo más tarde.'}`;
+                    document.getElementById('verdict-snippet').textContent = `El tribunal tiene problemas: ${data.detail || 'Inténtalo de nuevo más tarde.'}`;
                     resultsArea.classList.remove('hidden');
+                    resultsArea.scrollIntoView({ behavior: 'smooth' });
                 }
 
             } catch (error) {
-                console.error("Error de conexión:", error);
-                // ACÁ CAMBIAMOS EL ALERT VIEJO POR EL MODAL FLAMANTE CON BOTÓN CANCELAR
+                // ESTO SOLO SE VA A EJECUTAR SI POSTA SE CORTÓ EL INTERNET O RENDER SE APAGÓ
+                console.error("Error de conexión real:", error);
                 openPopup(
                     "Error de Conexión", 
                     "No se pudo conectar con el tribunal de la IA. Asegúrate de que tu backend en Render esté activo."
