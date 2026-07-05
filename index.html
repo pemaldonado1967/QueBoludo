@@ -63,7 +63,6 @@
 
         <!-- 2. HERO SECTION -->
         <section class="text-center space-y-4 py-6">
-            <!-- Espacio para banner AdSense Superior si se activa -->
             <div class="hidden text-xs text-center text-slate-400 dark:text-slate-600 tracking-widest uppercase mb-4">- PUBLICIDAD ANUNCIO -</div>
             
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
@@ -275,57 +274,80 @@
             }
         }
 
-        // --- SIMULACIÓN DEL CORE / VEREDICTO DE IA ---
+        // --- CORE CONECTADO REAL A LA API DE RENDER ---
         let currentVerdictText = ""; // Para compartir en WS
 
-        function processDrama(event) {
+        async function processDrama(event) {
             event.preventDefault();
             
             const form = document.getElementById('drama-form');
             const loader = document.getElementById('loader');
             const resultsArea = document.getElementById('results-area');
             const relValue = document.getElementById('relationship').value;
+            const storyValue = document.getElementById('story').value;
+            const submitButton = form.querySelector('button[type="submit"]');
             
-            // Ocultar resultados previos si existen y mostrar loader
+            // Ocultar resultados previos si existen y congelar interfaz
             resultsArea.classList.add('hidden');
-            form.querySelector('button[type="submit"]').disabled = true;
+            submitButton.disabled = true;
             loader.classList.remove('hidden');
 
-            // Simulación de rotación de mensajes divertidos en la carga de la API
+            // Mensajes divertidos de carga rotativos
             const loaderText = document.getElementById('loader-text');
-            const texts = ["Midiendo niveles de toxicidad...", "Sopesando argumentos absurdos...", "Consultando el código penal del drama..."];
+            const texts = ["Midiendo niveles de toxicidad...", "Sopesando argumentos absurdos...", "Consultando el código penal del drama...", "Cerebras procesando a la velocidad de la luz... ⚡"];
             let i = 0;
             const interval = setInterval(() => {
                 i = (i + 1) % texts.length;
                 loaderText.textContent = texts[i];
             }, 800);
 
-            // Simulación del tiempo de respuesta del servidor backend en Python (2.5 segundos)
-            setTimeout(() => {
+            try {
+                // LLAMADO REAL A TU BACKEND DE RENDER
+                const response = await fetch("https://queboludo.onrender.com/api/veredicto", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        relacion: relValue,
+                        historia: storyValue
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Guardamos el veredicto real de Cerebras para WhatsApp
+                    currentVerdictText = data.veredicto;
+                    
+                    // Pequeña lógica cosmética para el título según el resultado
+                    if (data.veredicto.toLowerCase().includes("vos sos") || data.veredicto.toLowerCase().includes("culpable")) {
+                        document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-rose-500">¡El tribunal habló!</span>`;
+                    } else {
+                        document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-emerald-500">¡Fuiste absuelto!</span>`;
+                    }
+                    
+                    // Inyectamos la respuesta cruda de la IA
+                    document.getElementById('verdict-snippet').textContent = data.veredicto;
+                    
+                    // Desplegar resultados con animación fluida
+                    resultsArea.classList.remove('hidden');
+                    resultsArea.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    document.getElementById('verdict-title').innerHTML = "❌ Error en el Juzgado";
+                    document.getElementById('verdict-snippet').textContent = `El servidor arrojó un error: ${data.detail || 'Inténtalo de nuevo más tarde.'}`;
+                    resultsArea.classList.remove('hidden');
+                }
+
+            } catch (error) {
+                console.error("Error de conexión:", error);
+                alert("No se pudo conectar con el tribunal de la IA. Asegúrate de que tu backend en Render esté activo.");
+            } finally {
+                // Detener animaciones y reactivar el formulario
                 clearInterval(interval);
                 loader.classList.add('hidden');
-                form.querySelector('button[type="submit"]').disabled = false;
-                
-                // Definir veredictos mock divertidos según la opción elegida
-                let target = relValue === 'pareja' ? 'tu pareja' : relValue === 'amigo' ? 'tu amigue' : 'la otra persona';
-                
-                // Generar respuestas aleatorias de simulación
-                const randomChance = Math.random() > 0.5;
-                if(randomChance) {
-                    currentVerdictText = `VEREDICTO: ${target.toUpperCase()} TIENE EL 92% DE LA CULPA.`;
-                    document.getElementById('verdict-title').innerHTML = `⚖️ ¡Tienes toda la razón! <span class="text-emerald-500">${target} es le bolude</span>.`;
-                    document.getElementById('verdict-snippet').textContent = `\"El Tribunal de la IA determina que el reclamo que te hicieron carece de lógica evolutiva. Exigir atención a las 4:00 AM porque apareciste con otra persona en sus sueños califica legalmente como un delirio. Estás libre de culpa.\"`;
-                } else {
-                    currentVerdictText = `VEREDICTO: VOS TENÉS EL 88% DE LA CULPA.`;
-                    document.getElementById('verdict-title').innerHTML = `⚖️ Mala noticia... <span class="text-rose-500">vos sos le bolude</span>.`;
-                    document.getElementById('verdict-snippet').textContent = `\"Tras analizar el texto, la IA concluye que dejar a tu mejor amigue esperando dos horas en la cafetería porque te 'quedaste colgado viendo videos de perritos' te otorga el monopolio absoluto de la culpabilidad en este caso. Pide perdón.\"`;
-                }
-                
-                // Mostrar el área de resultados con animación fluida
-                resultsArea.classList.remove('hidden');
-                resultsArea.scrollIntoView({ behavior: 'smooth' });
-                
-            }, 2500);
+                submitButton.disabled = false;
+            }
         }
 
         // --- FUNCIONES DE COMPARTIR VIRAL ---
