@@ -47,7 +47,7 @@ def obtener_veredicto(data: DramaInput):
 
     try:
         respuesta = client.chat.completions.create(
-            model="llama3.1-8b", # El modelo ultra-rápido de Cerebras
+            model="llama-3.1-8b", # El modelo ultra-rápido de Cerebras
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": data.historia}
