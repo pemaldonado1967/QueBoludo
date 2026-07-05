@@ -31,7 +31,6 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 antialiased font-sans">
-
     <!-- 1. HEADER MUTANTE (NAVEGACIÓN FIJA) -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 py-4">
         <div class="max-w-2xl mx-auto px-4 flex items-center justify-between">
@@ -57,10 +56,8 @@
             </div>
         </div>
     </header>
-
     <!-- CONTENEDOR PRINCIPAL DE COLUMNA ÚNICA UNIVERSAL -->
     <main class="max-w-2xl mx-auto px-4 pt-28 pb-16 space-y-12">
-
         <!-- 2. HERO SECTION -->
         <section class="text-center space-y-4 py-6">
             <div class="hidden text-xs text-center text-slate-400 dark:text-slate-600 tracking-widest uppercase mb-4">- PUBLICIDAD ANUNCIO -</div>
@@ -72,7 +69,6 @@
                 El primer Tribunal de Inteligencia Artificial neutral. Analiza tus discusiones cotidianas y dicta un veredicto inapelable con psicología y un toque de crudo sarcasmo.
             </p>
         </section>
-
         <!-- 3. EL TRIBUNAL DE LA IA (EL NÚCLEO INTERACTIVO) -->
         <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xl shadow-slate-100 dark:shadow-none space-y-6">
             <form id="drama-form" onsubmit="processDrama(event)" class="space-y-6">
@@ -87,7 +83,6 @@
                         <option value="otro">Otro ser humano</option>
                     </select>
                 </div>
-
                 <!-- La Caja del Chisme -->
                 <div class="space-y-2">
                     <label class="text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 uppercase">Cuéntale el chisme completo a la IA</label>
@@ -95,25 +90,21 @@
                         class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-500 transition placeholder-slate-400 dark:placeholder-slate-600 font-normal text-base resize-none"
                         placeholder="Escribe acá con lujo de detalle. Qué pasó, qué te dijeron, qué respondiste... no te guardes nada. La IA no te va a juzgar (bueno, un poco sí)..."></textarea>
                 </div>
-
                 <!-- Nota UX Defensivo preliminar -->
                 <p class="text-xs text-slate-400 dark:text-slate-500 text-center">
                     🔒 Tus secretos están a salvo. Los textos se procesan de forma estrictamente anónima y no se guardan en bases de datos.
                 </p>
-
                 <!-- Botón de Acción Principal -->
                 <button type="submit" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-bold text-lg shadow-lg shadow-violet-200 dark:shadow-none transform active:scale-[0.99] transition duration-150">
                     Dictar Veredicto ⚖️
                 </button>
             </form>
-
             <!-- Animación de Carga (Oculta por defecto) -->
             <div id="loader" class="hidden py-8 flex flex-col items-center justify-center space-y-4">
                 <div class="w-12 h-12 border-4 border-violet-600 border-t-transparent rounded-full animate-spin"></div>
                 <p class="text-sm font-medium text-slate-500 animate-pulse text-center" id="loader-text">Analizando niveles de toxicidad y ego...</p>
             </div>
         </section>
-
         <!-- 4. ZONA DINÁMICA DEL VEREDICTO Y EFECTO CANDADO (MONETIZACIÓN) -->
         <section id="results-area" class="hidden space-y-6">
             <hr class="border-slate-200 dark:border-slate-800" />
@@ -125,12 +116,10 @@
                     <h3 id="verdict-title" class="text-2xl font-extrabold text-slate-900 dark:text-white"></h3>
                     <p id="verdict-snippet" class="text-slate-600 dark:text-slate-400 italic font-medium bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-800"></p>
                 </div>
-
                 <!-- Botón Viral Inmediato -->
                 <button onclick="shareVerdict()" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center justify-center gap-2 transition shadow-md">
                     Compartir Veredicto en WhatsApp 💬
                 </button>
-
                 <!-- El Candado Premium (Efecto Blurry/Paywall) -->
                 <div class="relative mt-8 pt-4 border-t border-slate-100 dark:border-slate-800">
                     <!-- Contenido Difuminado -->
@@ -139,7 +128,6 @@
                         <p class="text-sm text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin hendrerit, neque vel pretium efficitur, justo magna aliquet turpis, eget volutpat diam sem eu urna. Duis eget dictum lorem, id scelerisque nisl.</p>
                         <p class="text-sm text-slate-400">Morbi dictum feugiat lectus ac egestas. Phasellus sed hendrerit dolor. Aliquam ac efficitur libero. Curabitur sed arcu id metus interdum feugiat sit amet quis purus.</p>
                     </div>
-
                     <!-- Capa Superpuesta del Candado Real -->
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4 bg-gradient-to-t from-white via-white/95 to-white/40 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-900/40 rounded-xl">
                         <div class="max-w-md space-y-4 bg-slate-50 dark:bg-slate-950 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl">
@@ -158,7 +146,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 5. ACORDEÓN DE CONFIANZA (F.A.Q.) -->
         <section class="space-y-4">
             <h3 class="text-lg font-bold text-center tracking-wide text-slate-500 uppercase">Preguntas Frecuentes</h3>
@@ -174,7 +161,6 @@
                         Completamente. La información introducida en la caja se envía de forma cifrada a la API de procesamiento y se destruye inmediatamente después de dictar el veredicto. No guardamos registros, nombres ni hilos en ninguna base de datos estable. Tu anonimato es nuestro pilar.
                     </div>
                 </div>
-
                 <!-- FAQ 2 -->
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900 overflow-hidden">
                     <button onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
@@ -185,7 +171,6 @@
                         Es un modelo avanzado de lenguaje configurado con fundamentos cognitivo-conductuales pero programado con una fuerte capa de humor y sátira. Debe tomarse como una herramienta de entretenimiento, catarsis y perspectiva humorística para desescalar tensiones absurdas.
                     </div>
                 </div>
-
                 <!-- FAQ 3 -->
                 <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900 overflow-hidden">
                     <button onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
@@ -198,7 +183,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 6. MÓDULO DE RELACIÓN (SUSCRIPCIÓN OPCIONAL) -->
         <section class="bg-slate-100 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl p-6 text-center space-y-4">
             <div class="space-y-1">
@@ -212,7 +196,6 @@
                 </button>
             </form>
         </section>
-
         <!-- 7. EL FOOTER (CUMPLIMIENTO LEGAL) -->
         <footer class="text-center space-y-4 pt-4 text-[11px] text-slate-400 dark:text-slate-600">
             <p>© 2026 Queboludo! Todos los derechos reservados. Diseñado para la resolución pacífica (y graciosa) de dramas humanos.</p>
@@ -222,9 +205,7 @@
                 <a href="#" class="hover:underline">Soporte y Contacto</a>
             </div>
         </footer>
-
     </main>
-
     <!-- 8. MÓDULO POP-UP MODAL (MANEJO DE ERRORES/ALERTAS CON CANCELAR) -->
     <div id="popup-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-4 transition-all duration-300">
@@ -249,7 +230,6 @@
             </div>
         </div>
     </div>
-
     <!-- INTERACCIONES LOGICAS DE JAVASCRIPT VANILLA -->
     <script>
         // --- CONTROL DE MODO OSCURO (DARK/LIGHT) ---
@@ -261,7 +241,6 @@
         } else {
             document.documentElement.classList.remove('dark');
         }
-
         themeToggleBtn.addEventListener('click', function() {
             if (document.documentElement.classList.contains('dark')) {
                 document.documentElement.classList.remove('dark');
@@ -271,7 +250,6 @@
                 localStorage.setItem('color-theme', 'dark');
             }
         });
-
         // --- COMPORTAMIENTO HEADER MUTANTE ---
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
@@ -283,7 +261,6 @@
                 header.classList.add('py-4');
             }
         });
-
         // --- CONTROL DEL ACORDEÓN FAQ ---
         function toggleFaq(button) {
             const answer = button.nextElementSibling;
@@ -298,26 +275,33 @@
                 icon.style.transform = 'rotate(180deg)';
             }
         }
-
         // --- FUNCIONES PARA MANDAR A LLAMAR AL POP-UP MODAL ---
+        const popupModalEl = document.getElementById('popup-modal');
+
         function openPopup(title, message) {
             document.getElementById('popup-title').textContent = title;
             document.getElementById('popup-message').textContent = message;
-            document.getElementById('popup-modal').classList.remove('hidden');
+            popupModalEl.classList.remove('hidden');
         }
-
         function closeModal() {
             // Alias interno por consistencia
             closePopup();
         }
-
         function closePopup() {
-            document.getElementById('popup-modal').classList.add('hidden');
+            popupModalEl.classList.add('hidden');
         }
-
+        // Cerrar haciendo click en el fondo oscuro (fuera de la tarjeta) para que nunca quede bloqueada
+        popupModalEl.addEventListener('click', (e) => {
+            if (e.target === popupModalEl) closePopup();
+        });
+        // Cerrar con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !popupModalEl.classList.contains('hidden')) {
+                closePopup();
+            }
+        });
         // --- CORE CONECTADO REAL A LA API DE RENDER ---
         let currentVerdictText = ""; // Para compartir en WS
-
         async function processDrama(event) {
             event.preventDefault();
             
@@ -332,7 +316,6 @@
             resultsArea.classList.add('hidden');
             submitButton.disabled = true;
             loader.classList.remove('hidden');
-
             // Mensajes divertidos de carga rotativos
             const loaderText = document.getElementById('loader-text');
             const texts = ["Midiendo niveles de toxicidad...", "Sopesando argumentos absurdos...", "Consultando el código penal del drama...", "Cerebras procesando a la velocidad de la luz... ⚡"];
@@ -341,7 +324,6 @@
                 i = (i + 1) % texts.length;
                 loaderText.textContent = texts[i];
             }, 800);
-
             try {
                 // LLAMADO REAL A TU BACKEND DE RENDER
                 const response = await fetch("https://queboludo.onrender.com/api/veredicto", {
@@ -354,15 +336,22 @@
                         historia: storyValue
                     })
                 });
-
                 const data = await response.json();
-
                 if (response.ok) {
-                    // Guardamos el veredicto real de Cerebras para WhatsApp
-                    currentVerdictText = data.veredicto || "";
-                    
-                    // SEGURIDAD: Solo pasamos a minúsculas si el texto realmente existe
-                    if (currentVerdictText && (currentVerdictText.toLowerCase().includes("vos sos") || currentVerdictText.toLowerCase().includes("culpable"))) {
+                    // Guardamos el veredicto real de Cerebras para WhatsApp, sin espacios de más
+                    currentVerdictText = (data.veredicto || "").trim();
+
+                    // Si vino vacío, NO asumimos "absuelto": cortamos y avisamos de verdad
+                    if (!currentVerdictText) {
+                        openPopup(
+                            "Veredicto no disponible",
+                            "El tribunal de IA no generó una respuesta esta vez. Probá de nuevo en unos segundos."
+                        );
+                        return;
+                    }
+
+                    const textoLower = currentVerdictText.toLowerCase();
+                    if (textoLower.includes("vos sos") || textoLower.includes("culpable")) {
                         document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-rose-500">¡El tribunal habló!</span>`;
                     } else {
                         document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-emerald-500">¡Fuiste absuelto!</span>`;
@@ -375,13 +364,12 @@
                     resultsArea.classList.remove('hidden');
                     resultsArea.scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    // SI EL BACKEND RESPONDIÓ UN ERROR (EJ: 500 DE CEREBRAS), MOSTRARLO BIEN ACÁ
+                    // SI EL BACKEND RESPONDIÓ UN ERROR (EJ: 502/500), MOSTRARLO BIEN ACÁ
                     document.getElementById('verdict-title').innerHTML = "❌ Error en el Juzgado";
                     document.getElementById('verdict-snippet').textContent = `El tribunal tiene problemas: ${data.detail || 'Inténtalo de nuevo más tarde.'}`;
                     resultsArea.classList.remove('hidden');
                     resultsArea.scrollIntoView({ behavior: 'smooth' });
                 }
-
             } catch (error) {
                 // ESTO SOLO SE VA A EJECUTAR SI POSTA SE CORTÓ EL INTERNET O RENDER SE APAGÓ
                 console.error("Error de conexión real:", error);
@@ -396,18 +384,15 @@
                 submitButton.disabled = false;
             }
         }
-
         // --- FUNCIONES DE COMPARTIR VIRAL ---
         function shareWebsite() {
             const text = encodeURIComponent("¡Che, encontré este sitio web que decide quién tiene la razón en las discusiones mediante IA! Pruébalo acá: " + window.location.href);
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
-
         function shareVerdict() {
             const text = encodeURIComponent(`🚨 Resultado del Tribunal de la IA en queboludo! 🚨\n\n${currentVerdictText}\n\nAnaliza tus propios dramas y mira quién tiene la culpa acá: ` + window.location.href);
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
-
         function subscribeEmail(event) {
             event.preventDefault();
             openPopup("¡Suscripción Exitosa!", "¡Registrado con éxito! Te avisaré de mi próximo proyecto. Cero spam garantizado.");
