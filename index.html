@@ -225,6 +225,31 @@
 
     </main>
 
+    <!-- 8. MÓDULO POP-UP MODAL (MANEJO DE ERRORES/ALERTAS CON CANCELAR) -->
+    <div id="popup-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-4 transition-all duration-300">
+            
+            <!-- Botón de Cierre Cruz (X) -->
+            <button onclick="closePopup()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-bold text-xl transition" aria-label="Cerrar">&times;</button>
+            
+            <!-- Encabezado del Pop-up -->
+            <div class="flex items-center gap-3 text-rose-500">
+                <span class="text-2xl">⚠️</span>
+                <h3 id="popup-title" class="text-lg font-bold text-slate-900 dark:text-white">Alerta del Tribunal</h3>
+            </div>
+            
+            <!-- Cuerpo del Mensaje -->
+            <p id="popup-message" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed"></p>
+            
+            <!-- Botonera Inferior con Cancelar -->
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closePopup()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-sm rounded-xl transition">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- INTERACCIONES LOGICAS DE JAVASCRIPT VANILLA -->
     <script>
         // --- CONTROL DE MODO OSCURO (DARK/LIGHT) ---
@@ -272,6 +297,22 @@
                 icon.textContent = '-';
                 icon.style.transform = 'rotate(180deg)';
             }
+        }
+
+        // --- FUNCIONES PARA MANDAR A LLAMAR AL POP-UP MODAL ---
+        function openPopup(title, message) {
+            document.getElementById('popup-title').textContent = title;
+            document.getElementById('popup-message').textContent = message;
+            document.getElementById('popup-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            // Alias interno por consistencia
+            closePopup();
+        }
+
+        function closePopup() {
+            document.getElementById('popup-modal').classList.add('hidden');
         }
 
         // --- CORE CONECTADO REAL A LA API DE RENDER ---
@@ -341,7 +382,11 @@
 
             } catch (error) {
                 console.error("Error de conexión:", error);
-                alert("No se pudo conectar con el tribunal de la IA. Asegúrate de que tu backend en Render esté activo.");
+                // ACÁ CAMBIAMOS EL ALERT VIEJO POR EL MODAL FLAMANTE CON BOTÓN CANCELAR
+                openPopup(
+                    "Error de Conexión", 
+                    "No se pudo conectar con el tribunal de la IA. Asegúrate de que tu backend en Render esté activo."
+                );
             } finally {
                 // Detener animaciones y reactivar el formulario
                 clearInterval(interval);
@@ -363,7 +408,7 @@
 
         function subscribeEmail(event) {
             event.preventDefault();
-            alert("¡Registrado con éxito! Te avisaré de mi próximo proyecto. Cero spam garantizado.");
+            openPopup("¡Suscripción Exitosa!", "¡Registrado con éxito! Te avisaré de mi próximo proyecto. Cero spam garantizado.");
             event.target.reset();
         }
     </script>
