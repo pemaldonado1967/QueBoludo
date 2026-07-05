@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>queboludo? — El Tribunal Inapelable de la IA</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Suavizar transiciones de color para el modo oscuro */
+        body { transition: background-color 0.3s ease, color 0.3s ease; }
+        /* Efecto de desenfoque personalizado para el candado premium */
+        .blur-premium { filter: blur(6px); user-select: none; pointer-events: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 antialiased font-sans">
+
+    <!-- 1. HEADER MUTANTE (NAVEGACIÓN FIJA) -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 py-4">
+        <div class="max-w-2xl mx-auto px-4 flex items-center justify-between">
+            <a href="#" class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-violet-600 to-indigo-500 bg-clip-text text-transparent">
+                queboludo<span class="text-violet-600">?</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <!-- Selector Idioma -->
+                <button id="lang-toggle" class="text-xs font-semibold px-2.5 py-1.5 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    ES
+                </button>
+                <!-- Selector Light/Dark -->
+                <button id="theme-toggle" class="p-1.5 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition" aria-label="Cambiar tema">
+                    <!-- Icono Sol (Visible en Dark Mode) -->
+                    <svg id="sun-icon" class="w-4 h-4 text-amber-500 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <!-- Icono Luna (Visible en Light Mode) -->
+                    <svg id="moon-icon" class="w-4 h-4 text-indigo-600 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <!-- Botón Compartir Fijo -->
+                <button onclick="shareWebsite()" class="p-1.5 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white transition" aria-label="Compartir en WhatsApp">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.454 5.709 1.455h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DE COLUMNA ÚNICA UNIVERSAL -->
+    <main class="max-w-2xl mx-auto px-4 pt-28 pb-16 space-y-12">
+
+        <!-- 2. HERO SECTION -->
+        <section class="text-center space-y-4 py-6">
+            <!-- Espacio para banner AdSense Superior si se activa -->
+            <div class="hidden text-xs text-center text-slate-400 dark:text-slate-600 tracking-widest uppercase mb-4">- PUBLICIDAD ANUNCIO -</div>
+            
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+                ¿Quién tiene la culpa en este <span class="bg-gradient-to-r from-violet-600 to-indigo-500 bg-clip-text text-transparent">drama</span>?
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto font-light">
+                El primer Tribunal de Inteligencia Artificial neutral. Analiza tus discusiones cotidianas y dicta un veredicto inapelable con psicología y un toque de crudo sarcasmo.
+            </p>
+        </section>
+
+        <!-- 3. EL TRIBUNAL DE LA IA (EL NÚCLEO INTERACTIVO) -->
+        <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xl shadow-slate-100 dark:shadow-none space-y-6">
+            <form id="drama-form" onsubmit="processDrama(event)" class="space-y-6">
+                <!-- Selector de Relación -->
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 uppercase">¿Con quién es la discusión?</label>
+                    <select id="relationship" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-500 transition font-medium">
+                        <option value="pareja">Mi Pareja</option>
+                        <option value="amigo">Mi Amigo/a</option>
+                        <option value="pariente">Un Familiar / Pariente</option>
+                        <option value="trabajo">Mi Jefe / Colega de Trabajo</option>
+                        <option value="otro">Otro ser humano</option>
+                    </select>
+                </div>
+
+                <!-- La Caja del Chisme -->
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 uppercase">Cuéntale el chisme completo a la IA</label>
+                    <textarea id="story" required minlength="20" rows="6" 
+                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-500 transition placeholder-slate-400 dark:placeholder-slate-600 font-normal text-base resize-none"
+                        placeholder="Escribe acá con lujo de detalle. Qué pasó, qué te dijeron, qué respondiste... no te guardes nada. La IA no te va a juzgar (bueno, un poco sí)..."></textarea>
+                </div>
+
+                <!-- Nota UX Defensivo preliminar -->
+                <p class="text-xs text-slate-400 dark:text-slate-500 text-center">
+                    🔒 Tus secretos están a salvo. Los textos se procesan de forma estrictamente anónima y no se guardan en bases de datos.
+                </p>
+
+                <!-- Botón de Acción Principal -->
+                <button type="submit" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-bold text-lg shadow-lg shadow-violet-200 dark:shadow-none transform active:scale-[0.99] transition duration-150">
+                    Dictar Veredicto ⚖️
+                </button>
+            </form>
+
+            <!-- Animación de Carga (Oculta por defecto) -->
+            <div id="loader" class="hidden py-8 flex flex-col items-center justify-center space-y-4">
+                <div class="w-12 h-12 border-4 border-violet-600 border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-sm font-medium text-slate-500 animate-pulse text-center" id="loader-text">Analizando niveles de toxicidad y ego...</p>
+            </div>
+        </section>
+
+        <!-- 4. ZONA DINÁMICA DEL VEREDICTO Y EFECTO CANDADO (MONETIZACIÓN) -->
+        <section id="results-area" class="hidden space-y-6">
+            <hr class="border-slate-200 dark:border-slate-800" />
+            
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+                <!-- Veredicto Gratis -->
+                <div class="text-center space-y-3">
+                    <span class="px-3 py-1 text-xs font-bold uppercase tracking-widest bg-rose-100 text-rose-700 dark:bg-rose-950/50 dark:text-rose-400 rounded-full">Sentencia Oficial</span>
+                    <h3 id="verdict-title" class="text-2xl font-extrabold text-slate-900 dark:text-white"></h3>
+                    <p id="verdict-snippet" class="text-slate-600 dark:text-slate-400 italic font-medium bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-800"></p>
+                </div>
+
+                <!-- Botón Viral Inmediato -->
+                <button onclick="shareVerdict()" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center justify-center gap-2 transition shadow-md">
+                    Compartir Veredicto en WhatsApp 💬
+                </button>
+
+                <!-- El Candado Premium (Efecto Blurry/Paywall) -->
+                <div class="relative mt-8 pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <!-- Contenido Difuminado -->
+                    <div class="blur-premium space-y-4">
+                        <h4 class="font-bold text-lg text-slate-400">Análisis Conductual Avanzado</h4>
+                        <p class="text-sm text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin hendrerit, neque vel pretium efficitur, justo magna aliquet turpis, eget volutpat diam sem eu urna. Duis eget dictum lorem, id scelerisque nisl.</p>
+                        <p class="text-sm text-slate-400">Morbi dictum feugiat lectus ac egestas. Phasellus sed hendrerit dolor. Aliquam ac efficitur libero. Curabitur sed arcu id metus interdum feugiat sit amet quis purus.</p>
+                    </div>
+
+                    <!-- Capa Superpuesta del Candado Real -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4 bg-gradient-to-t from-white via-white/95 to-white/40 dark:from-slate-900 dark:via-slate-900/95 dark:to-slate-900/40 rounded-xl">
+                        <div class="max-w-md space-y-4 bg-slate-50 dark:bg-slate-950 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xl">
+                            <span class="text-2xl">🔒</span>
+                            <h4 class="font-extrabold text-lg text-slate-900 dark:text-white">Desbloquea el Reporte Psicológico Completo</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">
+                                Consigue el desglose de 3 párrafos de la IA para entender el trasfondo psicológico de tu discusión, tácticas para ganar el próximo debate y un **Diploma Digital de "Yo Tenía la Razón"** listo para enviar.
+                            </p>
+                            <!-- Botón Checkout Stripe -->
+                            <a href="https://checkout.stripe.com/tu_link_maestro" target="_blank" rel="noopener" class="block w-full py-3 px-4 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-lg shadow transition text-sm">
+                                Obtener Reporte y Diploma por $1.99
+                            </a>
+                            <span class="text-[10px] text-slate-400 block">Pago seguro vía Stripe. Garantía de anonimato absoluto.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ACORDEÓN DE CONFIANZA (F.A.Q.) -->
+        <section class="space-y-4">
+            <h3 class="text-lg font-bold text-center tracking-wide text-slate-500 uppercase">Preguntas Frecuentes</h3>
+            
+            <div class="space-y-2">
+                <!-- FAQ 1 -->
+                <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                        <span>¿Mis secretos y chismes están seguros con la IA?</span>
+                        <span class="faq-icon transition-transform duration-200">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-4 text-sm text-slate-600 dark:text-slate-400 font-light">
+                        Completamente. La información introducida en la caja se envía de forma cifrada a la API de procesamiento y se destruye inmediatamente después de dictar el veredicto. No guardamos registros, nombres ni hilos en ninguna base de datos estable. Tu anonimato es nuestro pilar.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                        <span>¿Es esto psicología real o un juego?</span>
+                        <span class="faq-icon transition-transform duration-200">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-4 text-sm text-slate-600 dark:text-slate-400 font-light">
+                        Es un modelo avanzado de lenguaje configurado con fundamentos cognitivo-conductuales pero programado con una fuerte capa de humor y sátira. Debe tomarse como una herramienta de entretenimiento, catarsis y perspectiva humorística para desescalar tensiones absurdas.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-5 py-4 text-left font-semibold text-sm sm:text-base flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                        <span>¿Por qué el reporte completo cuesta $1.99?</span>
+                        <span class="faq-icon transition-transform duration-200">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-4 text-sm text-slate-600 dark:text-slate-400 font-light">
+                        Mantener despierta a la Inteligencia Artificial y pagar los servidores de procesamiento de alta velocidad cuesta dinero por cada consulta. El veredicto principal siempre será gratis, pero ese pequeño aporte nos ayuda a seguir lanzando herramientas sin llenar el sitio de anuncios invasivos.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. MÓDULO DE RELACIÓN (SUSCRIPCIÓN OPCIONAL) -->
+        <section class="bg-slate-100 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl p-6 text-center space-y-4">
+            <div class="space-y-1">
+                <h4 class="font-bold text-base">¿Te gustan las herramientas simples?</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Me dedico a crear micro-soluciones absurdas y útiles para la vida cotidiana. Déjame tu correo si quieres enterarte cuando lance la próxima (máximo una vez al mes).</p>
+            </div>
+            <form onsubmit="subscribeEmail(event)" class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+                <input type="email" required placeholder="Tu correo electrónico principal" class="flex-1 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-500 text-sm transition" />
+                <button type="submit" class="px-5 py-2.5 bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-slate-200 text-white dark:text-slate-950 font-bold rounded-xl text-sm transition">
+                    Avisarme
+                </button>
+            </form>
+        </section>
+
+        <!-- 7. EL FOOTER (CUMPLIMIENTO LEGAL) -->
+        <footer class="text-center space-y-4 pt-4 text-[11px] text-slate-400 dark:text-slate-600">
+            <p>© 2026 queboludo? Todos los derechos reservados. Diseñado para la resolución pacífica (y graciosa) de dramas humanos.</p>
+            <div class="flex justify-center gap-4 font-medium">
+                <a href="#" class="hover:underline">Privacidad</a>
+                <a href="#" class="hover:underline">Términos de Servicio</a>
+                <a href="#" class="hover:underline">Soporte y Contacto</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- INTERACCIONES LOGICAS DE JAVASCRIPT VANILLA -->
+    <script>
+        // --- CONTROL DE MODO OSCURO (DARK/LIGHT) ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        // Cargar estado inicial desde localStorage o sistema
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // --- COMPORTAMIENTO HEADER MUTANTE ---
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.remove('py-4');
+                header.classList.add('py-2', 'shadow-sm');
+            } else {
+                header.classList.remove('py-2', 'shadow-sm');
+                header.classList.add('py-4');
+            }
+        });
+
+        // --- CONTROL DEL ACORDEÓN FAQ ---
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            
+            answer.classList.toggle('hidden');
+            if (answer.classList.contains('hidden')) {
+                icon.textContent = '+';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                icon.textContent = '-';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // --- SIMULACIÓN DEL CORE / VEREDICTO DE IA ---
+        let currentVerdictText = ""; // Para compartir en WS
+
+        function processDrama(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('drama-form');
+            const loader = document.getElementById('loader');
+            const resultsArea = document.getElementById('results-area');
+            const relValue = document.getElementById('relationship').value;
+            
+            // Ocultar resultados previos si existen y mostrar loader
+            resultsArea.classList.add('hidden');
+            form.querySelector('button[type="submit"]').disabled = true;
+            loader.classList.remove('hidden');
+
+            // Simulación de rotación de mensajes divertidos en la carga de la API
+            const loaderText = document.getElementById('loader-text');
+            const texts = ["Midiendo niveles de toxicidad...", "Sopesando argumentos absurdos...", "Consultando el código penal del drama..."];
+            let i = 0;
+            const interval = setInterval(() => {
+                i = (i + 1) % texts.length;
+                loaderText.textContent = texts[i];
+            }, 800);
+
+            // Simulación del tiempo de respuesta del servidor backend en Python (2.5 segundos)
+            setTimeout(() => {
+                clearInterval(interval);
+                loader.classList.add('hidden');
+                form.querySelector('button[type="submit"]').disabled = false;
+                
+                // Definir veredictos mock divertidos según la opción elegida
+                let target = relValue === 'pareja' ? 'tu pareja' : relValue === 'amigo' ? 'tu amigue' : 'la otra persona';
+                
+                // Generar respuestas aleatorias de simulación
+                const randomChance = Math.random() > 0.5;
+                if(randomChance) {
+                    currentVerdictText = `VEREDICTO: ${target.toUpperCase()} TIENE EL 92% DE LA CULPA.`;
+                    document.getElementById('verdict-title').innerHTML = `⚖️ ¡Tienes toda la razón! <span class="text-emerald-500">${target} es le bolude</span>.`;
+                    document.getElementById('verdict-snippet').textContent = `\"El Tribunal de la IA determina que el reclamo que te hicieron carece de lógica evolutiva. Exigir atención a las 4:00 AM porque apareciste con otra persona en sus sueños califica legalmente como un delirio. Estás libre de culpa.\"`;
+                } else {
+                    currentVerdictText = `VEREDICTO: VOS TENÉS EL 88% DE LA CULPA.`;
+                    document.getElementById('verdict-title').innerHTML = `⚖️ Mala noticia... <span class="text-rose-500">vos sos le bolude</span>.`;
+                    document.getElementById('verdict-snippet').textContent = `\"Tras analizar el texto, la IA concluye que dejar a tu mejor amigue esperando dos horas en la cafetería porque te 'quedaste colgado viendo videos de perritos' te otorga el monopolio absoluto de la culpabilidad en este caso. Pide perdón.\"`;
+                }
+                
+                // Mostrar el área de resultados con animación fluida
+                resultsArea.classList.remove('hidden');
+                resultsArea.scrollIntoView({ behavior: 'smooth' });
+                
+            }, 2500);
+        }
+
+        // --- FUNCIONES DE COMPARTIR VIRAL ---
+        function shareWebsite() {
+            const text = encodeURIComponent("¡Che, encontré este sitio web que decide quién tiene la razón en las discusiones mediante IA! Pruébalo acá: " + window.location.href);
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        function shareVerdict() {
+            const text = encodeURIComponent(`🚨 Resultado del Tribunal de la IA en queboludo? 🚨\n\n${currentVerdictText}\n\nAnaliza tus propios dramas y mira quién tiene la culpa acá: ` + window.location.href);
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        function subscribeEmail(event) {
+            event.preventDefault();
+            alert("¡Registrado con éxito! Te avisaré de mi próximo proyecto. Cero spam garantizado.");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
