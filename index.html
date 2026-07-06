@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Queboludo! — El Tribunal Inapelable de la IA</title>
+    <title>Queboludo! — El Boludómetro Argento</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,10 +38,6 @@
                 Queboludo<span class="text-violet-600">!</span>
             </a>
             <div class="flex items-center gap-3">
-                <!-- Selector Idioma -->
-                <button id="lang-toggle" class="text-xs font-semibold px-2.5 py-1.5 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
-                    ES
-                </button>
                 <!-- Selector Light/Dark -->
                 <button id="theme-toggle" class="p-1.5 rounded-md bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition" aria-label="Cambiar tema">
                     <!-- Icono Sol (Visible en Dark Mode) -->
@@ -63,18 +59,18 @@
             <div class="hidden text-xs text-center text-slate-400 dark:text-slate-600 tracking-widest uppercase mb-4">- PUBLICIDAD ANUNCIO -</div>
             
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-                ¿Quién tiene la culpa en este <span class="bg-gradient-to-r from-violet-600 to-indigo-500 bg-clip-text text-transparent">drama</span>?
+                ¿Este es un <span class="bg-gradient-to-r from-violet-600 to-indigo-500 bg-clip-text text-transparent">boludo</span>, o no?
             </h1>
             <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto font-light">
-                El primer Tribunal de Inteligencia Artificial neutral. Analiza tus discusiones cotidianas y dicta un veredicto inapelable con psicología y un toque de crudo sarcasmo.
+                La primera IA con sentido común de barrio. Contale tu bardo y enterate, sin vueltas, quién es el/la boludo/a de la historia: vos, o el otro. Con psicología de boliche y cero pelos en la lengua.
             </p>
         </section>
-        <!-- 3. EL TRIBUNAL DE LA IA (EL NÚCLEO INTERACTIVO) -->
+        <!-- 3. EL NÚCLEO INTERACTIVO -->
         <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xl shadow-slate-100 dark:shadow-none space-y-6">
             <form id="drama-form" onsubmit="processDrama(event)" class="space-y-6">
                 <!-- Selector de Relación -->
                 <div class="space-y-2">
-                    <label class="text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 uppercase">¿Con quién es la discusión?</label>
+                    <label class="text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 uppercase">¿Quién es (o sería) el boludo que te rompe las pelotas?</label>
                     <select id="relationship" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-500 transition font-medium">
                         <option value="pareja">Mi Pareja</option>
                         <option value="amigo">Mi Amigo/a</option>
@@ -83,12 +79,12 @@
                         <option value="otro">Otro ser humano</option>
                     </select>
                 </div>
-                <!-- La Caja del Chisme -->
+                <!-- La Caja del Bardo -->
                 <div class="space-y-2">
-                    <label class="text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 uppercase">Cuéntale el chisme completo a la IA</label>
+                    <label class="text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 uppercase">Contale a la IA toda la posta (sin filtro)</label>
                     <textarea id="story" required minlength="20" rows="6" 
                         class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-violet-500 transition placeholder-slate-400 dark:placeholder-slate-600 font-normal text-base resize-none"
-                        placeholder="Escribe acá con lujo de detalle. Qué pasó, qué te dijeron, qué respondiste... no te guardes nada. La IA no te va a juzgar (bueno, un poco sí)..."></textarea>
+                        placeholder="Contame bien todo lo que pasó: quién dijo qué, qué contestaste, qué te quedó dando vueltas... Quiero saber si tengo razón, aunque me vaya a doler no tenerla."></textarea>
                 </div>
                 <!-- Nota UX Defensivo preliminar -->
                 <p class="text-xs text-slate-400 dark:text-slate-500 text-center">
@@ -96,7 +92,7 @@
                 </p>
                 <!-- Botón de Acción Principal -->
                 <button type="submit" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-bold text-lg shadow-lg shadow-violet-200 dark:shadow-none transform active:scale-[0.99] transition duration-150">
-                    Dictar Veredicto ⚖️
+                    ¿Con qué boludo trato? 🤔
                 </button>
             </form>
             <!-- Animación de Carga (Oculta por defecto) -->
@@ -105,16 +101,16 @@
                 <p class="text-sm font-medium text-slate-500 animate-pulse text-center" id="loader-text">Analizando niveles de toxicidad y ego...</p>
             </div>
         </section>
-        <!-- 4. ZONA DINÁMICA DEL VEREDICTO Y EFECTO CANDADO (MONETIZACIÓN) -->
+        <!-- 4. ZONA DINÁMICA DEL RESULTADO Y EFECTO CANDADO (MONETIZACIÓN) -->
         <section id="results-area" class="hidden space-y-6">
             <hr class="border-slate-200 dark:border-slate-800" />
             
             <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
-                <!-- Veredicto Gratis -->
+                <!-- Resultado Gratis -->
                 <div class="text-center space-y-3">
-                    <span class="px-3 py-1 text-xs font-bold uppercase tracking-widest bg-rose-100 text-rose-700 dark:bg-rose-950/50 dark:text-rose-400 rounded-full">Sentencia Oficial</span>
+                    <span class="px-3 py-1 text-xs font-bold uppercase tracking-widest bg-rose-100 text-rose-700 dark:bg-rose-950/50 dark:text-rose-400 rounded-full">Boludómetro ⚡</span>
                     <h3 id="verdict-title" class="text-2xl font-extrabold text-slate-900 dark:text-white"></h3>
-                    <p id="verdict-snippet" class="text-slate-600 dark:text-slate-400 italic font-medium bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-800"></p>
+                    <p id="verdict-snippet" class="text-slate-600 dark:text-slate-400 italic font-medium bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-800 text-left whitespace-pre-line"></p>
                 </div>
                 <!-- Botón Viral Inmediato -->
                 <button onclick="shareVerdict()" class="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center justify-center gap-2 transition shadow-md">
@@ -124,13 +120,14 @@
                 <!-- Sección de Consejo Post-Veredicto -->
                 <div id="advice-section" class="hidden space-y-3">
                     <button id="advice-button" onclick="pedirConsejo()" class="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition shadow-md">
-                        <!-- Texto seteado dinámicamente por JS según quién sea el culpable -->
+                        <!-- Texto seteado dinámicamente por JS según quién sea el boludo -->
                     </button>
                     <div id="advice-loader" class="hidden py-4 flex flex-col items-center justify-center space-y-2">
                         <div class="w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
                         <p class="text-xs text-slate-500 animate-pulse">Pensando en cómo salir de esta con dignidad...</p>
                     </div>
-                    <div id="advice-result" class="hidden text-sm text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-800 whitespace-pre-line"></div>
+                    <!-- Acá se inyectan las tarjetas de consejo generadas por JS -->
+                    <div id="advice-result" class="hidden space-y-3"></div>
                 </div>
 
                 <!-- El Candado Premium (Efecto Blurry/Paywall) -->
@@ -171,7 +168,7 @@
                         <span class="faq-icon transition-transform duration-200">+</span>
                     </button>
                     <div class="faq-answer hidden px-5 pb-4 text-sm text-slate-600 dark:text-slate-400 font-light">
-                        Completamente. La información introducida en la caja se envía de forma cifrada a la API de procesamiento y se destruye inmediatamente después de dictar el veredicto. No guardamos registros, nombres ni hilos en ninguna base de datos estable. Tu anonimato es nuestro pilar.
+                        Completamente. La información introducida en la caja se envía de forma cifrada a la API de procesamiento y se destruye inmediatamente después de dar el veredicto. No guardamos registros, nombres ni hilos en ninguna base de datos estable. Tu anonimato es nuestro pilar.
                     </div>
                 </div>
                 <!-- FAQ 2 -->
@@ -229,7 +226,7 @@
             <!-- Encabezado del Pop-up -->
             <div class="flex items-center gap-3 text-rose-500">
                 <span class="text-2xl">⚠️</span>
-                <h3 id="popup-title" class="text-lg font-bold text-slate-900 dark:text-white">Alerta del Tribunal</h3>
+                <h3 id="popup-title" class="text-lg font-bold text-slate-900 dark:text-white">¡Epa, pará un cachito!</h3>
             </div>
             
             <!-- Cuerpo del Mensaje -->
@@ -333,7 +330,7 @@
             loader.classList.remove('hidden');
             // Mensajes divertidos de carga rotativos
             const loaderText = document.getElementById('loader-text');
-            const texts = ["Midiendo niveles de toxicidad...", "Sopesando argumentos absurdos...", "Consultando el código penal del drama...", "Cerebras procesando a la velocidad de la luz... ⚡"];
+            const texts = ["Midiendo niveles de toxicidad...", "Sopesando argumentos absurdos...", "Consultando el sentido común de barrio...", "Cerebras procesando a la velocidad de la luz... ⚡"];
             let i = 0;
             const interval = setInterval(() => {
                 i = (i + 1) % texts.length;
@@ -357,28 +354,28 @@
                     currentVerdictText = (data.veredicto || "").trim();
                     currentCulpable = (data.culpable || "").trim().toLowerCase();
 
-                    // Si vino vacío, NO asumimos "absuelto": cortamos y avisamos de verdad
+                    // Si vino vacío, NO asumimos nada: cortamos y avisamos de verdad
                     if (!currentVerdictText) {
                         openPopup(
                             "Veredicto no disponible",
-                            "El tribunal de IA no generó una respuesta esta vez. Probá de nuevo en unos segundos."
+                            "El Boludómetro no generó una respuesta esta vez. Probá de nuevo en unos segundos."
                         );
                         return;
                     }
 
                     if (currentCulpable === "usuario") {
-                        document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-rose-500">¡Fuiste vos, boludo!</span>`;
+                        document.getElementById('verdict-title').innerHTML = `😬 Diagnóstico: <span class="text-rose-500">¡Epa... el boludo sos vos!</span>`;
                     } else if (currentCulpable === "otro") {
-                        document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-emerald-500">¡Fuiste absuelto!</span>`;
+                        document.getElementById('verdict-title').innerHTML = `🎉 Diagnóstico: <span class="text-emerald-500">¡Zafaste, el boludo es el otro!</span>`;
                     } else {
                         // El backend no pudo determinar con certeza quién tuvo la culpa
-                        document.getElementById('verdict-title').innerHTML = `⚖️ Sentencia: <span class="text-slate-400">Empate técnico</span>`;
+                        document.getElementById('verdict-title').innerHTML = `🤷 Diagnóstico: <span class="text-slate-400">Empate técnico de boludos</span>`;
                     }
 
                     // Inyectamos la respuesta cruda de la IA
                     document.getElementById('verdict-snippet').textContent = currentVerdictText;
 
-                    // Configurar el botón de consejo según quién sea el culpable
+                    // Configurar el botón de consejo según quién sea el boludo
                     setupAdviceButton();
 
                     // Desplegar resultados con animación fluida
@@ -386,8 +383,8 @@
                     resultsArea.scrollIntoView({ behavior: 'smooth' });
                 } else {
                     // SI EL BACKEND RESPONDIÓ UN ERROR (EJ: 502/500), MOSTRARLO BIEN ACÁ
-                    document.getElementById('verdict-title').innerHTML = "❌ Error en el Juzgado";
-                    document.getElementById('verdict-snippet').textContent = `El tribunal tiene problemas: ${data.detail || 'Inténtalo de nuevo más tarde.'}`;
+                    document.getElementById('verdict-title').innerHTML = "❌ Se rompió el Boludómetro";
+                    document.getElementById('verdict-snippet').textContent = `Problema técnico: ${data.detail || 'Inténtalo de nuevo más tarde.'}`;
                     document.getElementById('advice-section').classList.add('hidden');
                     resultsArea.classList.remove('hidden');
                     resultsArea.scrollIntoView({ behavior: 'smooth' });
@@ -397,7 +394,7 @@
                 console.error("Error de conexión real:", error);
                 openPopup(
                     "Error de Conexión", 
-                    "No se pudo conectar con el tribunal de la IA. Asegúrate de que tu backend en Render esté activo."
+                    "No se pudo conectar con el Boludómetro. Asegúrate de que tu backend en Render esté activo."
                 );
             } finally {
                 // Detener animaciones y reactivar el formulario
@@ -416,22 +413,59 @@
 
             // Reseteamos el estado cada vez que llega un veredicto nuevo
             adviceResult.classList.add('hidden');
-            adviceResult.textContent = '';
+            adviceResult.innerHTML = '';
             adviceLoader.classList.add('hidden');
             adviceButton.disabled = false;
 
             if (currentCulpable === 'usuario') {
-                adviceButton.textContent = '¿Qué actitud debería tomar? 🙋';
+                adviceButton.textContent = '¿Cómo salgo de esta? 🙋';
                 adviceButton.classList.remove('hidden');
                 adviceSection.classList.remove('hidden');
             } else if (currentCulpable === 'otro') {
-                adviceButton.textContent = '¿Cómo lidiar con esta persona? 🤝';
+                adviceButton.textContent = '¿Cómo tratar a este boludo? 🤝';
                 adviceButton.classList.remove('hidden');
                 adviceSection.classList.remove('hidden');
             } else {
                 // No sabemos con certeza quién tuvo la culpa: no mostramos el botón
                 adviceSection.classList.add('hidden');
             }
+        }
+
+        // Íconos que van rotando para que cada tarjeta de consejo se vea distinta
+        const ADVICE_ICONS = ['💡', '🎯', '🗣️', '❤️'];
+
+        function renderAdviceCards(consejos) {
+            const adviceResult = document.getElementById('advice-result');
+            adviceResult.innerHTML = '';
+
+            consejos.forEach((item, idx) => {
+                const icon = ADVICE_ICONS[idx % ADVICE_ICONS.length];
+                const card = document.createElement('div');
+                card.className = "flex gap-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800";
+
+                const iconSpan = document.createElement('span');
+                iconSpan.className = "text-2xl leading-none flex-shrink-0";
+                iconSpan.textContent = icon;
+
+                const textWrap = document.createElement('div');
+                textWrap.className = "space-y-1";
+
+                const titulo = document.createElement('p');
+                titulo.className = "font-bold text-sm text-slate-900 dark:text-white";
+                titulo.textContent = item.titulo || '';
+
+                const texto = document.createElement('p');
+                texto.className = "text-sm text-slate-600 dark:text-slate-400 leading-relaxed";
+                texto.textContent = item.texto || '';
+
+                textWrap.appendChild(titulo);
+                textWrap.appendChild(texto);
+                card.appendChild(iconSpan);
+                card.appendChild(textWrap);
+                adviceResult.appendChild(card);
+            });
+
+            adviceResult.classList.remove('hidden');
         }
 
         async function pedirConsejo() {
@@ -444,6 +478,7 @@
             adviceButton.disabled = true;
             adviceButton.classList.add('hidden');
             adviceResult.classList.add('hidden');
+            adviceResult.innerHTML = '';
             adviceLoader.classList.remove('hidden');
 
             try {
@@ -460,15 +495,14 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    const consejoTexto = (data.consejo || "").trim();
-                    if (!consejoTexto) {
-                        openPopup("Consejo no disponible", "La IA no generó una respuesta esta vez. Probá de nuevo.");
+                    const consejos = Array.isArray(data.consejos) ? data.consejos : [];
+                    if (consejos.length === 0) {
+                        openPopup("Consejo no disponible", "El Boludómetro no generó una respuesta esta vez. Probá de nuevo.");
                         adviceButton.classList.remove('hidden');
                         adviceButton.disabled = false;
                         return;
                     }
-                    adviceResult.textContent = consejoTexto;
-                    adviceResult.classList.remove('hidden');
+                    renderAdviceCards(consejos);
                 } else {
                     openPopup("Error al pedir consejo", data.detail || "Inténtalo de nuevo más tarde.");
                     adviceButton.classList.remove('hidden');
@@ -477,7 +511,7 @@
                 console.error("Error de conexión real (consejo):", error);
                 openPopup(
                     "Error de Conexión",
-                    "No se pudo conectar con el tribunal de la IA para pedir el consejo. Asegúrate de que tu backend en Render esté activo."
+                    "No se pudo conectar con el Boludómetro para pedir el consejo. Asegúrate de que tu backend en Render esté activo."
                 );
                 adviceButton.classList.remove('hidden');
             } finally {
@@ -488,11 +522,11 @@
 
         // --- FUNCIONES DE COMPARTIR VIRAL ---
         function shareWebsite() {
-            const text = encodeURIComponent("¡Che, encontré este sitio web que decide quién tiene la razón en las discusiones mediante IA! Pruébalo acá: " + window.location.href);
+            const text = encodeURIComponent("¡Che, encontré este sitio web que te confirma quién es el boludo en tus discusiones usando IA! Pruébalo acá: " + window.location.href);
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
         function shareVerdict() {
-            const text = encodeURIComponent(`🚨 Resultado del Tribunal de la IA en queboludo! 🚨\n\n${currentVerdictText}\n\nAnaliza tus propios dramas y mira quién tiene la culpa acá: ` + window.location.href);
+            const text = encodeURIComponent(`🚨 Resultado del Boludómetro en queboludo! 🚨\n\n${currentVerdictText}\n\nAnaliza tus propios dramas y enterate quién es el boludo acá: ` + window.location.href);
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
         function subscribeEmail(event) {
